@@ -1,0 +1,69 @@
+---
+title: "Data Science in a Day"
+output: ioslides_presentation
+---
+
+# Overview
+
+## Aim
+Teach a bit of everything along the data science process.
+
+## Methodology
+Rapid iterations of:
+
+- lecture
+- structured exercises
+- apply learnings to our project
+
+## Resources
+- Use R from your browser (see business card)
+- Get the handout at [bit.ly/dsiadh](https://bit.ly/dsiadh)
+- Get the slides at [bit.ly/dsiads](https://bit.ly/dsiadp)
+
+## Agenda
+- Identifying the business challenge
+- Converting a business challenge into a data science problem
+- Building a plan of attack
+- Preparing data
+- Preparing predictive columns
+- Building candidate models
+- Evaluating models
+- Selecting models against business criteria
+- Putting a model into production
+
+# The business challenge
+
+## Why have a challenge to solve?
+Data science is expensive, shouldn't do it without good reason
+
+## What sort of challenges might a business have?
+Mot business challenges align to one or more of the three parts of boosting profits:
+- By increasing revenue 
+- By retaining revenue sources
+- By reducing overheads
+
+## What business challenge to start with?
+- Pick **low effort** and **medium/high** value
+- Don't pick something business critical
+- One that's measurable - if it ain't measured it ain't science!
+
+## Formulating the business challenge
+Need a succinct description that contains key measures of success e.g.
+
+> We would like increase the amount our customers spend with us and our level of integration with the customers' lives by increasing the number of our products that  customers consume.
+
+## Exercise
+Formulate a business challenge for your organisation.
+
+# Business challenge to data science problem
+## Identify behaviours
+What behaviour(s) by customers, staff, third parties contirbute to the business goal?
+
+## Manipulating behaviours
+In what ways could these behaviours be influenced to impact the key metrics?
+
+## Match the right prediction
+What predictions or prescriptions could you make that would be the influence needed?
+
+## Example
+> To increase customers consumption of multiple products, customers need to see relevant products with a speedy purchase option. We need to identify for each customer what relevant is, where possible, to ensure custommers are most likely to purchase.

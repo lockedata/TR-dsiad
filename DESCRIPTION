@@ -1,10 +1,22 @@
-Package: DataScienceInADay
-Title: What the Package Does (one line, title case)
-Version: 0.0.0.9000
-Authors@R: person("First", "Last", email = "first.last@example.com", role = c("aut", "cre"))
-Description: What the package does (one paragraph).
-Depends: R (>= 3.4.0)
-License: What license is it under?
+Package: datascienceinaday
+Title: Data Science in a day
+Version: 0.1.0
+Authors@R: person("Steph", "Locke",   email="steph@itsalocke.com", role = c("aut", "cre"))
+Description: Get a flavour of what data science is and how to do it.
+Depends:
+    R (>= 3.1.2)
+Imports: 
+    revealjs,
+	  caret,
+	  tidyverse
+Suggests:
+    knitr,
+    devtools
+Remotes: 
+    lockedata/revealjs
+License: CC-BY-SA-4.0 + file LICENSE
 Encoding: UTF-8
 LazyData: true
-Imports: packrat
+VignetteBuilder: knitr
+RoxygenNote: 6.0.1
+Roxygen: list(markdown = TRUE)
