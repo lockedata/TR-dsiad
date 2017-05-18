@@ -122,3 +122,4 @@ We usually need enough data to take a sample to develop our model on and another
 If you want to be able to predict missing values, the amount of data required increases.
 
 ## Notebook time!
+[studio.azureml.net](https://studio.azureml.net/)
