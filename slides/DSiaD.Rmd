@@ -3,6 +3,11 @@ title: "Data Science in a Day"
 output: ioslides_presentation
 ---
 
+```{r setup, include=FALSE}
+library(dplyr)
+```
+
+
 # Overview
 
 ## Aim
@@ -123,3 +128,9 @@ If you want to be able to predict missing values, the amount of data required in
 
 ## Notebook time!
 [studio.azureml.net](https://studio.azureml.net/)
+
+# Data I/O
+
+# Data manipulation basics
+```{r child="subDocs/dplyrbasics.Rmd"}
+```
