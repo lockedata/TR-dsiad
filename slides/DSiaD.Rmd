@@ -17,8 +17,8 @@ Rapid iterations of:
 
 ## Resources
 - Use R from your browser (see business card)
-- Get the handout at [bit.ly/dsiadh](https://bit.ly/dsiadh)
-- Get the slides at [bit.ly/dsiadslides](https://bit.ly/dsiadslides)
+- Get the materials at [bit.ly/dsiadrepo](http://bit.ly/dsiadrepo)
+- Get the slides at [bit.ly/dsiadslides](http://bit.ly/dsiadslides)
 
 ## Agenda
 - Identifying the business challenge
@@ -31,13 +31,19 @@ Rapid iterations of:
 - Selecting models against business criteria
 - Putting a model into production
 
+## Abraham Lincoln
+> Give me six hours to chop down a tree and I will spend the first four sharpening the axe.
+
+## 6Ps
+> Proper Planning Prevents Piss-Poor Performance
+
 # The business challenge
 
 ## Why have a challenge to solve?
 Data science is expensive, shouldn't do it without good reason
 
 ## What sort of challenges might a business have?
-Mot business challenges align to one or more of the three parts of boosting profits:
+Most business challenges align to one or more of the three parts of boosting profits:
 - By increasing revenue 
 - By retaining revenue sources
 - By reducing overheads
@@ -61,7 +67,7 @@ Chicago tourism has taken a recent hit because of a spate of food poisonings at 
 
 # Business challenge to data science problem
 ## Identify behaviours
-What behaviour(s) by customers, staff, third parties contirbute to the business goal?
+What behaviour(s) by customers, staff, third parties contribute to the business goal?
 
 ## Manipulating behaviours
 In what ways could these behaviours be influenced to impact the key metrics?
@@ -76,3 +82,43 @@ What predictions or prescriptions could you make that would be the influence nee
 Addressing your business problem, what could you influence with data science?
 
 ## Chicago City Council
+
+# Building a plan of attack
+## How will you know you've won?
+First and foremost you make sure you can measure your impact.
+
+## What sort of actions will need to be taken?
+What will be the operational constraints your work will need to work within? 
+
+It's important to know if you have to have something that works on devices, can be done by batch, or requires regulatory approval.
+
+## What sort of data could be involved?
+What data sets might you need for exploratory analysis and later modelling?
+
+It's a good idea to think about the retrieval and processing required of these in light of your operational constraints.
+
+## Project planning
+How much time can you dedicate to a prototype and/or building a full model? Who will put things into production?
+
+Get some of these things straight to help you avoid going into an analysis rabbit hole.
+
+## Ethics
+Would your work disadvantage a group of people based on things like gender, race, disability? If yes, should you proceed?
+
+## Exercise
+Work through our points of consideration for your candidate data science project. What sort of constraints would be in place? What data do you have available? Could you measure your impact?
+
+## Chicago City Council
+
+# Preparing data
+## Data usage rights
+Are you allowed to use data for the purposes you're proposing to put it to?
+
+## Get data
+We need some data for our project. 
+
+We usually need enough data to take a sample to develop our model on and another set to test our model. I'd suggest sample sizes of no less than a thousand.
+
+If you want to be able to predict missing values, the amount of data required increases.
+
+## Notebook time!
