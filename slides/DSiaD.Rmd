@@ -18,7 +18,7 @@ Rapid iterations of:
 ## Resources
 - Use R from your browser (see business card)
 - Get the handout at [bit.ly/dsiadh](https://bit.ly/dsiadh)
-- Get the slides at [bit.ly/dsiads](https://bit.ly/dsiadp)
+- Get the slides at [bit.ly/dsiadslides](https://bit.ly/dsiadslides)
 
 ## Agenda
 - Identifying the business challenge
@@ -55,6 +55,10 @@ Need a succinct description that contains key measures of success e.g.
 ## Exercise
 Formulate a business challenge for your organisation.
 
+## Chicago City Council
+
+Chicago tourism has taken a recent hit because of a spate of food poisonings at Chicago food establishments. What can we do to address this issue?
+
 # Business challenge to data science problem
 ## Identify behaviours
 What behaviour(s) by customers, staff, third parties contirbute to the business goal?
@@ -67,3 +71,8 @@ What predictions or prescriptions could you make that would be the influence nee
 
 ## Example
 > To increase customers consumption of multiple products, customers need to see relevant products with a speedy purchase option. We need to identify for each customer what relevant is, where possible, to ensure custommers are most likely to purchase.
+
+## Exercise
+Addressing your business problem, what could you influence with data science?
+
+## Chicago City Council
