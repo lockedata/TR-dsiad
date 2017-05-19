@@ -50,7 +50,7 @@ iris %>%
 
 ```{r}
 iris %>%
-  mutate(Sepal.Area = Sepal.Length*Sepal.Width,
+  mutate(Sepal.Area1 = Sepal.Length*Sepal.Width,
          Rounded.Sepal.Area1=round(Sepal.Area1))
 ```
 
