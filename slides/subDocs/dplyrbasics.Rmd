@@ -1,41 +1,36 @@
 
 
-## Filtering
-
-### Conditions
+## Filtering - Conditions
 ```{r}
 iris %>%
   filter(Species == "setosa")
 ```
 
-### Positions
+## Filtering - Positions
 ```{r}
 iris %>%
   slice(which.max(Sepal.Length)) 
 ```
 
-## Column manipulation
-
-### Selection
-#### Basic
+## Column manipulation - Selection
 ```{r}
 iris %>%
   select(Sepal.Length, Sepal.Width, Species)
 ```
 
-#### Negative selection
+## Column manipulation - Selection
 ```{r}
 iris %>%
   select(-Sepal.Length, -Sepal.Width)
 ```
 
-#### Regex type selections
+## Column manipulation - Selection
 ```{r}
 iris %>%
   select(starts_with("S"))
 ```
 
-### Aliasing
+## Column manipulation - Aliasing
 
 ```{r}
 iris %>%
@@ -43,29 +38,30 @@ iris %>%
   head
 ```
 
-### Bulk renaming
-```{r}
-iris %>%
-  rename_(.dots=setNames(names(.), tolower(gsub("\\.", "_", names(.)))))
-```
 
-### New columns
+## New columns
 
 ```{r}
 iris %>%
   mutate(Sepal.Area= Sepal.Length*Sepal.Width)
 ```
 
-## Aggregations
+## New columns
 
-### Overall
+```{r}
+iris %>%
+  mutate(Sepal.Area = Sepal.Length*Sepal.Width,
+         Rounded.Sepal.Area1=round(Sepal.Area1))
+```
+
+## Aggregations
 ```{r}
 iris %>%
   summarise(mean_sepal_length=mean(Sepal.Length),
             n=n())
 ```
 
-### Groupings
+## Groupings
 ```{r}
 iris %>%
   group_by(Species )%>%
@@ -73,14 +69,13 @@ iris %>%
             n=n())
 ```
 
-## Table ops
-### Sorting
+## Sorting
 ```{r}
 iris %>%
   arrange(desc(Sepal.Length))
 ```
 
-### Sampling
+## Sampling
 ```{r}
 iris %>% 
   sample_n(2)
@@ -94,8 +89,7 @@ irisLookup<-data.frame( Species = c("Other","setosa","virginica") ,
                       )
 ```
 
-### Basic joins
-#### Left
+## Left join
 ```{r, warning=FALSE}
 iris %>%
   left_join(irisLookup) %>%
@@ -104,7 +98,7 @@ iris %>%
             RHS_NAs = sum(is.na(Property)))
 ```
 
-#### Inner
+## Inner join
 ```{r, warning=FALSE}
 iris %>%
   inner_join(irisLookup) %>%
@@ -113,7 +107,7 @@ iris %>%
             RHS_NAs = sum(is.na(Property)))
 ```
 
-#### Full join
+## Full join
 ```{r, warning=FALSE}
 iris %>%
   full_join(irisLookup) %>%
@@ -122,7 +116,7 @@ iris %>%
             RHS_NAs = sum(is.na(Property)))
 ```
 
-#### Anti-join
+## Anti-join
 ```{r, warning=FALSE}
 iris %>%
   anti_join(irisLookup) %>%
@@ -130,7 +124,7 @@ iris %>%
   summarise(N=n())
 ```
 
-#### Semi-join
+## Semi-join
 ```{r, warning=FALSE}
 iris %>%
   semi_join(irisLookup) %>%
@@ -138,9 +132,7 @@ iris %>%
   summarise(N=n())
 ```
 
-### Complex joins
-
-#### Different names
+## Joins on different names
 ```{r, warning=FALSE}
 irisLookup<-data.frame( species = c("Other","setosa","virginica") ,
                         Property = c(1,1,2)
@@ -153,7 +145,7 @@ iris %>%
             RHS_NAs = sum(is.na(Property)))
 ```
 
-#### Compound keys
+## Joins on compound keys
 ```{r, warning=FALSE}
 irisLookup<-data.frame( Species = c("Other","setosa","virginica") ,
                         Sepal.Length = c(5.9, 4.9, 4.7)
@@ -165,7 +157,7 @@ iris %>%
   summarise(N=n())
 ```
 
-#### Calculated values
+## Joins on calculated values
 ```{r, warning=FALSE}
 irisLookup<-data.frame( Species = c("Other","setosa","virginica") ,
                         Sepal.Length = c("Large","Large","Small")
