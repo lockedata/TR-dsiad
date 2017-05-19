@@ -130,6 +130,8 @@ If you want to be able to predict missing values, the amount of data required in
 [studio.azureml.net](https://studio.azureml.net/)
 
 # Data I/O
+```{r child="subDocs/io.Rmd"}
+```
 
 # Data manipulation basics
 ```{r child="subDocs/dplyrbasics.Rmd"}

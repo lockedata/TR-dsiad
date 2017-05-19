@@ -8,7 +8,8 @@ Depends:
 Imports: 
     revealjs,
 	  caret,
-	  tidyverse
+	  tidyverse,
+	  bookdown
 Suggests:
     knitr,
     devtools

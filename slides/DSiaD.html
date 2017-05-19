@@ -194,8 +194,76 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <h1>Notebook time!</h1>
 <p><a href="https://studio.azureml.net/">studio.azureml.net</a></p>
 </section></section>
-<section><section id="filtering" class="titleslide slide level1"><h1>Filtering</h1></section><section id="conditions" class="slide level2">
-<h1>Conditions</h1>
+<section><section id="data-io" class="titleslide slide level1"><h1>Data I/O</h1></section><section id="requirements" class="slide level2">
+<h1>Requirements</h1>
+<ul>
+<li>suggested package: data.table</li>
+<li>suggested package: readr</li>
+<li>suggested package: readxl</li>
+</ul>
+</section><section id="in" class="slide level2">
+<h1>In</h1>
+<table>
+<thead>
+<tr class="header">
+<th>Format</th>
+<th>Functions</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>CSV</td>
+<td>read.csv , data.table::fread , readr::read_csv</td>
+</tr>
+<tr class="even">
+<td>Excel</td>
+<td>readxl::read_excel</td>
+</tr>
+<tr class="odd">
+<td>Database</td>
+<td>RODBC::sqlQuery , DBI::dbGetQuery</td>
+</tr>
+<tr class="even">
+<td>SPSS / SAS / Stata</td>
+<td>haven::read_[prog]</td>
+</tr>
+</tbody>
+</table>
+</section><section id="out" class="slide level2">
+<h1>Out</h1>
+<table>
+<thead>
+<tr class="header">
+<th>Format</th>
+<th>Functions</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>CSV</td>
+<td>write.csv</td>
+</tr>
+<tr class="even">
+<td>Excel</td>
+<td>openxlsx::write.xlsx</td>
+</tr>
+<tr class="odd">
+<td>Database</td>
+<td>RODBC::sqlSave , DBI::dbWriteTable</td>
+</tr>
+<tr class="even">
+<td>SPSS / SAS / Stata</td>
+<td>foreign::write.foreign</td>
+</tr>
+</tbody>
+</table>
+</section><section id="other-file-types" class="slide level2">
+<h1>Other file types</h1>
+<p>As well standard formats, there’s a lot of connector packages out there, including a suite for <a href="https://github.com/RevolutionAnalytics/RHadoop/wiki">Hadoop</a>.</p>
+</section></section>
+<section><section id="data-manipulation-basics" class="titleslide slide level1"><h1>Data manipulation basics</h1></section><section id="filtering" class="slide level2">
+<h1>Filtering</h1>
+<h3 id="conditions">Conditions</h3>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">iris %&gt;%
 <span class="st">  </span><span class="kw">filter</span>(Species ==<span class="st"> &quot;setosa&quot;</span>)</code></pre></div>
 <pre><code>##    Sepal.Length Sepal.Width Petal.Length Petal.Width Species
@@ -249,16 +317,15 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 ## 48          4.6         3.2          1.4         0.2  setosa
 ## 49          5.3         3.7          1.5         0.2  setosa
 ## 50          5.0         3.3          1.4         0.2  setosa</code></pre>
-</section><section id="positions" class="slide level2">
-<h1>Positions</h1>
+<h3 id="positions">Positions</h3>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">iris %&gt;%
 <span class="st">  </span><span class="kw">slice</span>(<span class="kw">which.max</span>(Sepal.Length)) </code></pre></div>
 <pre><code>##   Sepal.Length Sepal.Width Petal.Length Petal.Width   Species
 ## 1          7.9         3.8          6.4           2 virginica</code></pre>
-</section></section>
-<section><section id="column-manipulation" class="titleslide slide level1"><h1>Column manipulation</h1></section><section id="selection" class="slide level2">
-<h1>Selection</h1>
-<h3 id="basic">Basic</h3>
+</section><section id="column-manipulation" class="slide level2">
+<h1>Column manipulation</h1>
+<h3 id="selection">Selection</h3>
+<h4 id="basic">Basic</h4>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">iris %&gt;%
 <span class="st">  </span><span class="kw">select</span>(Sepal.Length, Sepal.Width, Species)</code></pre></div>
 <pre><code>##     Sepal.Length Sepal.Width    Species
@@ -412,7 +479,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 ## 148          6.5         3.0  virginica
 ## 149          6.2         3.4  virginica
 ## 150          5.9         3.0  virginica</code></pre>
-<h3 id="negative-selection">Negative selection</h3>
+<h4 id="negative-selection">Negative selection</h4>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">iris %&gt;%
 <span class="st">  </span><span class="kw">select</span>(-Sepal.Length, -Sepal.Width)</code></pre></div>
 <pre><code>##     Petal.Length Petal.Width    Species
@@ -566,7 +633,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 ## 148          5.2         2.0  virginica
 ## 149          5.4         2.3  virginica
 ## 150          5.1         1.8  virginica</code></pre>
-<h3 id="regex-type-selections">Regex type selections</h3>
+<h4 id="regex-type-selections">Regex type selections</h4>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">iris %&gt;%
 <span class="st">  </span><span class="kw">select</span>(<span class="kw">starts_with</span>(<span class="st">&quot;S&quot;</span>))</code></pre></div>
 <pre><code>##     Sepal.Length Sepal.Width    Species
@@ -720,8 +787,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 ## 148          6.5         3.0  virginica
 ## 149          6.2         3.4  virginica
 ## 150          5.9         3.0  virginica</code></pre>
-</section><section id="aliasing" class="slide level2">
-<h1>Aliasing</h1>
+<h3 id="aliasing">Aliasing</h3>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">iris %&gt;%
 <span class="st">  </span><span class="kw">rename</span>(<span class="dt">sepal_length =</span> Sepal.Length, <span class="dt">sepal_width =</span> Sepal.Width) %&gt;%
 <span class="st">  </span>head</code></pre></div>
@@ -732,8 +798,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 ## 4          4.6         3.1          1.5         0.2  setosa
 ## 5          5.0         3.6          1.4         0.2  setosa
 ## 6          5.4         3.9          1.7         0.4  setosa</code></pre>
-</section><section id="bulk-renaming" class="slide level2">
-<h1>Bulk renaming</h1>
+<h3 id="bulk-renaming">Bulk renaming</h3>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">iris %&gt;%
 <span class="st">  </span><span class="kw">rename_</span>(<span class="dt">.dots=</span><span class="kw">setNames</span>(<span class="kw">names</span>(.), <span class="kw">tolower</span>(<span class="kw">gsub</span>(<span class="st">&quot;</span><span class="ch">\\</span><span class="st">.&quot;</span>, <span class="st">&quot;_&quot;</span>, <span class="kw">names</span>(.)))))</code></pre></div>
 <pre><code>##     sepal_length sepal_width petal_length petal_width    species
@@ -887,8 +952,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 ## 148          6.5         3.0          5.2         2.0  virginica
 ## 149          6.2         3.4          5.4         2.3  virginica
 ## 150          5.9         3.0          5.1         1.8  virginica</code></pre>
-</section><section id="new-columns" class="slide level2">
-<h1>New columns</h1>
+<h3 id="new-columns">New columns</h3>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">iris %&gt;%
 <span class="st">  </span><span class="kw">mutate</span>(<span class="dt">Sepal.Area=</span> Sepal.Length*Sepal.Width)</code></pre></div>
 <pre><code>##     Sepal.Length Sepal.Width Petal.Length Petal.Width    Species
@@ -1193,16 +1257,15 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 ## 148      19.50
 ## 149      21.08
 ## 150      17.70</code></pre>
-</section></section>
-<section><section id="aggregations" class="titleslide slide level1"><h1>Aggregations</h1></section><section id="overall" class="slide level2">
-<h1>Overall</h1>
+</section><section id="aggregations" class="slide level2">
+<h1>Aggregations</h1>
+<h3 id="overall">Overall</h3>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">iris %&gt;%
 <span class="st">  </span><span class="kw">summarise</span>(<span class="dt">mean_sepal_length=</span><span class="kw">mean</span>(Sepal.Length),
             <span class="dt">n=</span><span class="kw">n</span>())</code></pre></div>
 <pre><code>##   mean_sepal_length   n
 ## 1          5.843333 150</code></pre>
-</section><section id="groupings" class="slide level2">
-<h1>Groupings</h1>
+<h3 id="groupings">Groupings</h3>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">iris %&gt;%
 <span class="st">  </span><span class="kw">group_by</span>(Species )%&gt;%
 <span class="st">  </span><span class="kw">summarise</span>(<span class="dt">mean_sepal_length=</span><span class="kw">mean</span>(Sepal.Length),
@@ -1213,9 +1276,9 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 ## 1     setosa             5.006    50
 ## 2 versicolor             5.936    50
 ## 3  virginica             6.588    50</code></pre>
-</section></section>
-<section><section id="table-ops" class="titleslide slide level1"><h1>Table ops</h1></section><section id="sorting" class="slide level2">
-<h1>Sorting</h1>
+</section><section id="table-ops" class="slide level2">
+<h1>Table ops</h1>
+<h3 id="sorting">Sorting</h3>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">iris %&gt;%
 <span class="st">  </span><span class="kw">arrange</span>(<span class="kw">desc</span>(Sepal.Length))</code></pre></div>
 <pre><code>##     Sepal.Length Sepal.Width Petal.Length Petal.Width    Species
@@ -1369,17 +1432,19 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 ## 148          4.4         3.0          1.3         0.2     setosa
 ## 149          4.4         3.2          1.3         0.2     setosa
 ## 150          4.3         3.0          1.1         0.1     setosa</code></pre>
-</section><section id="sampling" class="slide level2">
-<h1>Sampling</h1>
+<h3 id="sampling">Sampling</h3>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">iris %&gt;%<span class="st"> </span>
 <span class="st">  </span><span class="kw">sample_n</span>(<span class="dv">2</span>)</code></pre></div>
 <pre><code>##    Sepal.Length Sepal.Width Petal.Length Petal.Width    Species
 ## 98          6.2         2.9          4.3         1.3 versicolor
-## 18          5.1         3.5          1.4         0.3     setosa</code></pre>
-</section></section>
-<section><section id="joins" class="titleslide slide level1"><h1>Joins</h1></section><section id="basic-joins" class="slide level2">
-<h1>Basic joins</h1>
-<h3 id="left">Left</h3>
+## 19          5.7         3.8          1.7         0.3     setosa</code></pre>
+</section><section id="joins" class="slide level2">
+<h1>Joins</h1>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">irisLookup&lt;-<span class="kw">data.frame</span>( <span class="dt">Species =</span> <span class="kw">c</span>(<span class="st">&quot;Other&quot;</span>,<span class="st">&quot;setosa&quot;</span>,<span class="st">&quot;virginica&quot;</span>) ,
+                        <span class="dt">Property =</span> <span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">2</span>)
+                      )</code></pre></div>
+<h3 id="basic-joins">Basic joins</h3>
+<h4 id="left">Left</h4>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">iris %&gt;%
 <span class="st">  </span><span class="kw">left_join</span>(irisLookup) %&gt;%
 <span class="st">  </span><span class="kw">group_by</span>(Species) %&gt;%
@@ -1392,7 +1457,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 ## 1     setosa    50       0
 ## 2 versicolor    50      50
 ## 3  virginica    50       0</code></pre>
-<h3 id="inner">Inner</h3>
+<h4 id="inner">Inner</h4>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">iris %&gt;%
 <span class="st">  </span><span class="kw">inner_join</span>(irisLookup) %&gt;%
 <span class="st">  </span><span class="kw">group_by</span>(Species) %&gt;%
@@ -1404,7 +1469,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 ##       &lt;chr&gt; &lt;int&gt;   &lt;int&gt;
 ## 1    setosa    50       0
 ## 2 virginica    50       0</code></pre>
-<h3 id="full-join">Full join</h3>
+<h4 id="full-join">Full join</h4>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">iris %&gt;%
 <span class="st">  </span><span class="kw">full_join</span>(irisLookup) %&gt;%
 <span class="st">  </span><span class="kw">group_by</span>(Species) %&gt;%
@@ -1418,7 +1483,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 ## 2     setosa    50       0
 ## 3 versicolor    50      50
 ## 4  virginica    50       0</code></pre>
-<h3 id="anti-join">Anti-join</h3>
+<h4 id="anti-join">Anti-join</h4>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">iris %&gt;%
 <span class="st">  </span><span class="kw">anti_join</span>(irisLookup) %&gt;%
 <span class="st">  </span><span class="kw">group_by</span>(Species) %&gt;%
@@ -1428,7 +1493,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 ##      Species     N
 ##       &lt;fctr&gt; &lt;int&gt;
 ## 1 versicolor    50</code></pre>
-<h3 id="semi-join">Semi-join</h3>
+<h4 id="semi-join">Semi-join</h4>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">iris %&gt;%
 <span class="st">  </span><span class="kw">semi_join</span>(irisLookup) %&gt;%
 <span class="st">  </span><span class="kw">group_by</span>(Species) %&gt;%
@@ -1439,9 +1504,8 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 ##      &lt;fctr&gt; &lt;int&gt;
 ## 1    setosa    50
 ## 2 virginica    50</code></pre>
-</section><section id="complex-joins" class="slide level2">
-<h1>Complex joins</h1>
-<h3 id="different-names">Different names</h3>
+<h3 id="complex-joins">Complex joins</h3>
+<h4 id="different-names">Different names</h4>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">irisLookup&lt;-<span class="kw">data.frame</span>( <span class="dt">species =</span> <span class="kw">c</span>(<span class="st">&quot;Other&quot;</span>,<span class="st">&quot;setosa&quot;</span>,<span class="st">&quot;virginica&quot;</span>) ,
                         <span class="dt">Property =</span> <span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">2</span>)
                       )
@@ -1456,7 +1520,7 @@ iris %&gt;%
 ##       &lt;chr&gt; &lt;int&gt;   &lt;int&gt;
 ## 1    setosa    50       0
 ## 2 virginica    50       0</code></pre>
-<h3 id="compound-keys">Compound keys</h3>
+<h4 id="compound-keys">Compound keys</h4>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">irisLookup&lt;-<span class="kw">data.frame</span>( <span class="dt">Species =</span> <span class="kw">c</span>(<span class="st">&quot;Other&quot;</span>,<span class="st">&quot;setosa&quot;</span>,<span class="st">&quot;virginica&quot;</span>) ,
                         <span class="dt">Sepal.Length =</span> <span class="kw">c</span>(<span class="fl">5.9</span>, <span class="fl">4.9</span>, <span class="fl">4.7</span>)
                       )
@@ -1469,7 +1533,7 @@ iris %&gt;%
 ##   Species     N
 ##     &lt;chr&gt; &lt;int&gt;
 ## 1  setosa     4</code></pre>
-<h3 id="calculated-values">Calculated values</h3>
+<h4 id="calculated-values">Calculated values</h4>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">irisLookup&lt;-<span class="kw">data.frame</span>( <span class="dt">Species =</span> <span class="kw">c</span>(<span class="st">&quot;Other&quot;</span>,<span class="st">&quot;setosa&quot;</span>,<span class="st">&quot;virginica&quot;</span>) ,
                         <span class="dt">Sepal.Length =</span> <span class="kw">c</span>(<span class="st">&quot;Large&quot;</span>,<span class="st">&quot;Large&quot;</span>,<span class="st">&quot;Small&quot;</span>)
                       )
