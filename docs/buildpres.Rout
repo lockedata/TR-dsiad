@@ -196,20 +196,15 @@ output file: DSiaD.knit.md
 
 Output created: docs/DSiaD.html
 Warning messages:
-1: In left_join_impl(x, y, by$x, by$y, suffix$x, suffix$y) :
-  joining factors with different levels, coercing to character vector
-2: In inner_join_impl(x, y, by$x, by$y, suffix$x, suffix$y) :
-  joining factors with different levels, coercing to character vector
-3: In full_join_impl(x, y, by$x, by$y, suffix$x, suffix$y) :
-  joining factors with different levels, coercing to character vector
-4: In inner_join_impl(x, y, by$x, by$y, suffix$x, suffix$y) :
-  joining factors with different levels, coercing to character vector
-5: In inner_join_impl(x, y, by$x, by$y, suffix$x, suffix$y) :
-  joining factors with different levels, coercing to character vector
-6: In inner_join_impl(x, y, by$x, by$y, suffix$x, suffix$y) :
-  joining factors with different levels, coercing to character vector
-7: In inner_join_impl(x, y, by$x, by$y, suffix$x, suffix$y) :
-  joining character vector and factor, coercing into character vector
+1: Column `Species` joining factors with different levels, coercing to character vector 
+2: Column `Species` joining factors with different levels, coercing to character vector 
+3: Column `Species` joining factors with different levels, coercing to character vector 
+4: Column `Species` joining factors with different levels, coercing to character vector 
+5: Column `Species` joining factors with different levels, coercing to character vector 
+6: Column `Species`/`species` joining factors with different levels, coercing to character vector 
+7: Column `Species` joining factors with different levels, coercing to character vector 
+8: Column `Species` joining factors with different levels, coercing to character vector 
+9: Column `Sepal.Bracket`/`Sepal.Length` joining character vector and factor, coercing into character vector 
 > 
 > handouts=list.files("handouts","*.Rmd",full.names=TRUE)
 > 
